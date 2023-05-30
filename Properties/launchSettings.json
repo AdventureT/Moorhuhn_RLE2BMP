@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "Moorhuhn_RLE2BMP": {
+      "commandName": "Project",
+      "commandLineArgs": "C:\\Users\\nepel\\Downloads\\Moorhuhn_1_Data\\data\\loading\\sprites\\loading_huhn.rle"
+    }
+  }
+}
