@@ -2,7 +2,7 @@
   "profiles": {
     "Moorhuhn_RLE2BMP": {
       "commandName": "Project",
-      "commandLineArgs": "C:\\Users\\nepel\\Downloads\\Moorhuhn_1_Data\\data\\loading\\sprites\\loading_huhn.rle"
+      "commandLineArgs": "\"C:\\Users\\Leon\\Desktop\\The Good the Egg and the Ugly\\Game\\data\\data\\loading\\sprites\\loading_huhn.rle\""
     }
   }
 }
