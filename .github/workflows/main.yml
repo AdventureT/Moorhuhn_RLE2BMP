@@ -44,40 +44,29 @@ jobs:
 
       run: dotnet publish --configuration Release --output ./publish
 
-    - name: Create Release
-
-      id: create_release
-
-      uses: actions/create-release@v1
-
+    - name: Create Lightweight Tag
+      uses: actions/github-script@v4
       env:
-
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
       with:
+        github-token: ${{ secrets.GITHUB_TOKEN }}
+        script: |
+          const version = '${{ steps.version.outputs.version }}';
+          const octokit = github.getOctokit(process.env.GITHUB_TOKEN);
+          const { data: refData } = await octokit.rest.git.createRef({
+            owner: context.repo.owner,
+            repo: context.repo.repo,
+            ref: `refs/tags/${version}`,
+            sha: context.sha
+          });
+          console.log(`Created tag: ${version}`);
 
-        tag_name: ${{ steps.version.outputs.version }}
-
-        release_name: Release ${{ steps.version.outputs.version }}
-        draft: false
-
-        prerelease: false
-
-    - name: Upload artifact
-
+    - name: Upload Artifact
       uses: actions/upload-release-asset@v1
-
       env:
-
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
       with:
-
-        upload_url: ${{ steps.create_release.outputs.upload_url }}
-
-        asset_path: ./publish/
-
-        asset_name: Moorhuh_RLE2BMP.zip
-
-        asset_content_type: application/zip
-
+        upload_url: ${{ github.event.repository.releases_url }}/tags/${{ steps.version.outputs.version }}/assets
+        asset_path: ./publish/YourAppName.dll
+        asset_name: YourAppName.exe
+        asset_content_type: application/octet-stream
