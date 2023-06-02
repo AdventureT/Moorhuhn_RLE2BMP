@@ -30,7 +30,7 @@ jobs:
       
     - name: Determine Release Version
       id: version
-      run: echo "::set-output name=version::$(date +'%Y%m%d').$GITHUB_RUN_NUMBER"
+      run: echo "::set-output name=version::v$(date +'%Y%m%d').$GITHUB_RUN_NUMBER"
 
     - name: Restore dependencies
 
