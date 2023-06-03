@@ -3,6 +3,8 @@ Converts .rle texture sprites to .bmp from Moorhuhn Schatzjäger games.
 
 Currently only tested with Moorhuhn Schatzjäger 1.
 
+**This programm only works on Windows!**
+
 # Usage
 Drag and drop your .rle file into Moorhuhn_RLE2BMP.exe
 
